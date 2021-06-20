@@ -28,18 +28,20 @@ from posts.models import Post
 from posts.serializers import PostSerializer
 
 
+from _app.default_values import MyPagination
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    
     class Meta:
         model = User
         fields = ["id", 'url', 'username', "posts"]
+
 
 # ViewSets define the view behavior.
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
+    pagination_class  = MyPagination
 
 
 
