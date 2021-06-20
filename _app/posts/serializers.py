@@ -4,6 +4,10 @@ from .models import Post
 
 from comments.serializers import CommentSerializer
 
+#from django.conf import settings
+
+
+
 # Serializers define the API representation.
 class PostSerializer(serializers.HyperlinkedModelSerializer):
     #comments = CommentSerializer(many=True, read_only=True)
