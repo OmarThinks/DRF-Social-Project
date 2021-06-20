@@ -24,11 +24,16 @@ from rest_framework import serializers, viewsets
 
 from django.contrib.auth.models import User
 
+from posts.models import Post
+from posts.serializers import PostSerializer
+
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    
     class Meta:
         model = User
-        fields = ['url', 'username']
+        fields = ["id", 'url', 'username', "posts"]
 
 # ViewSets define the view behavior.
 class UserViewSet(viewsets.ModelViewSet):

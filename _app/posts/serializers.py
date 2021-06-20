@@ -10,4 +10,4 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Post
         #fields = "__all__"
-        fields = ('id',"author" ,'content', "comments")
+        fields = ('id',"author" ,'content', "comments","url")
