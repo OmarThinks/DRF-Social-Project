@@ -7,5 +7,5 @@ class Post(models.Model):
 		on_delete=models.CASCADE)
 
 	def __str__(self):
-		return (self.id + " By "+ self.author.username + ") " +
-			self.content) 
+		return (str(self.id) + " By "+ self.author.username 
+			+ ") " + self.content) 
