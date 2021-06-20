@@ -4,7 +4,7 @@ from posts.models import Post
 
 class Comment(models.Model):
 	post = models.ForeignKey(Post,
-		on_delete=models.CASCADE)
+		on_delete=models.CASCADE,related_name='comments')
 	content = models.CharField(max_length=1000) 
 	author = models.ForeignKey(settings.AUTH_USER_MODEL,
 		on_delete=models.CASCADE)

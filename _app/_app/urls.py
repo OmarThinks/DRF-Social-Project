@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 
-from posts.views import PostViewSet
 from rest_framework import routers
 
 
@@ -41,12 +40,13 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 
-
-
+from posts.views import PostViewSet
+from comments.views import CommentViewSet
 
 router = routers.DefaultRouter()
 router.register(r'posts', PostViewSet)
 router.register(r'users', UserViewSet)
+router.register(r'comments', CommentViewSet)
 
 """
 # Wire up our API using automatic URL routing.

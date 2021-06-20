@@ -6,6 +6,6 @@ from .serializers import CommentSerializer
 
 # Create your views here.
 # ViewSets define the view behavior.
-class PostViewSet(viewsets.ModelViewSet):
+class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
