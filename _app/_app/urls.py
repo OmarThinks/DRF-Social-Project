@@ -16,9 +16,55 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
+from posts.views import PostViewSet
+from rest_framework import routers
+
+
+from rest_framework import serializers, viewsets
+
+from django.contrib.auth.models import User
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ['url', 'username']
+
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+
+
+
+
+
+
+
+router = routers.DefaultRouter()
+router.register(r'posts', PostViewSet)
+router.register(r'users', UserViewSet)
+
+"""
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
+urlpatterns = [
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+]
+"""
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api-auth/auth/', include('djoser.urls')),
     path('api-auth/auth/', include('djoser.urls.jwt')),
+    #path('api-auth/', include(router.urls, namespace="myapp")),
+    #path('api/', include(router.urls)),
+    path('api/', include((router.urls))),
+
 ]
