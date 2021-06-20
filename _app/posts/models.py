@@ -5,3 +5,7 @@ class Post(models.Model):
 	content = models.CharField(max_length=1000) 
 	author = models.ForeignKey(settings.AUTH_USER_MODEL,
 		on_delete=models.CASCADE)
+
+	def __str__(self):
+		return (self.id + " By "+ self.author.username + ") " +
+			self.content) 
