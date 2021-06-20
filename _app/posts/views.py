@@ -2,18 +2,7 @@ from rest_framework import viewsets
 
 from .models import Post
 from .serializers import PostSerializer
-
-
-from rest_framework.pagination import PageNumberPagination
-
-class MyPagination(PageNumberPagination):
-    page_size = 5
-    page_size_query_param = 'page_size'
-    max_page_size = 1000
-
-
-
-
+from _app.default_values import MyPagination
 
 # Create your views here.
 # ViewSets define the view behavior.
